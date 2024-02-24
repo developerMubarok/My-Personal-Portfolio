@@ -11,8 +11,22 @@
 /*=============== SCROLL SECTIONS ACTIVE LINK ===============*/
 
 /*==================== CHANGE BACKGROUND HEADER ====================*/
+function scrollHeader() {
+    const header = document.getElementById('header');
+    // when the scrool is greater than 80 viewport height, add the scroll-header class to header tag
+    if(this.scrolly >= 80) header.classList.add('scroll-header');
+    else header.classList.remove('scroll-header');
+}
+window.addEventListener('scroll', scrollHeader);
 
 /*==================== SHOW SCROLL UP ====================*/
+function scrollUp() {
+    const scrollUp = document.getElementById('scroll-up');
+    // when the scrool is greater than 80 viewport height, add the scroll-up class to header tag
+    if(this.scrolly >= 350) scrollUp.classList.add('show-scroll');
+    else scrollUp.classList.remove('show-scroll');
+}
+window.addEventListener('scroll', scrollUp );
 
 /*==================== ABOUT TABS ====================*/
 const tabs =document.querySelectorAll('[data-target]'),
@@ -54,7 +68,14 @@ const contactForm= document.getElementById('contact__form');
     }
     else{
         // serviceID -template -#form -publickey
-        emailjs.sendform('service_pul7wpi','template_ojc5y78','#contact-form','l5HKsD4oanb4pBIOS').then(() =>{
+        emailjs
+        .sendform(
+            'service_pul7wpi',
+            'template_juoo1wp',
+            '#contact-form',
+            'l5HKsD4oanb4pBIOS'
+            )
+            .then(() =>{
             // Show message add color, window +dot to open emoji
             errorMessage.classList.add('color-first');
             errorMessage.textContent='Message sent';
